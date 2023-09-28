@@ -18,6 +18,7 @@ namespace BejegyzesProjekt
             F2F();
             F3A();
             F3B();
+            F3C();
         }
 
         static List<Bejegyzes> bejegyzesek = new List<Bejegyzes>() { new Bejegyzes("Nagy Pál", "Az őszi kecske kalandjait elmesélő könyv."), new Bejegyzes("Kis Pál", "A kis kecske kalandjait elmesélő regény.") };
@@ -129,6 +130,31 @@ namespace BejegyzesProjekt
                 {
                     Console.WriteLine(nepszeruBejegyzesek[i].ToString());
                 }    
+            }
+        }
+
+        static void F3C()
+        {
+            List<Bejegyzes> nemAnnyiraNepszeruek = new List<Bejegyzes>();
+
+            for (int i = 0; i < bejegyzesek.Count; i++)
+            {
+                if (bejegyzesek[i].Likeok < 15)
+                {
+                    nemAnnyiraNepszeruek.Add(bejegyzesek[i]);
+                }
+            }
+
+            if (nemAnnyiraNepszeruek.Count == 0)
+            {
+                Console.WriteLine("Nincs 15 like-nál kevesebbel rendelkező bejegyzés!");
+            }
+            else
+            {
+                for (int i = 0; i < nemAnnyiraNepszeruek.Count; i++)
+                {
+                    Console.WriteLine(nemAnnyiraNepszeruek[i].ToString());
+                }
             }
         }
     }
