@@ -78,5 +78,13 @@ namespace BejegyzesProjekt
                 }
             } while (likeszamMax != hossz * 20);
         }
+
+        static void F2E()
+        {
+            Console.Write("Szöveg: ");
+            string szoveg = Console.ReadLine();
+
+            bejegyzesek[1].Tartalom = szoveg;
+        }
     }
 }
