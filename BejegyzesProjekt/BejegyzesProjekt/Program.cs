@@ -11,7 +11,11 @@ namespace BejegyzesProjekt
     {
         static void Main(string[] args)
         {
-            
+            F2B();
+            F2C();
+            F2D();
+            F2E();
+            F2F();
         }
 
         static List<Bejegyzes> bejegyzesek = new List<Bejegyzes>() { new Bejegyzes("Nagy Pál", "Az őszi kecske kalandjait elmesélő könyv."), new Bejegyzes("Kis Pál", "A kis kecske kalandjait elmesélő regény.") };
@@ -44,8 +48,7 @@ namespace BejegyzesProjekt
         {
             string dir = Directory.GetCurrentDirectory();
             dir = Directory.GetParent(dir).FullName;
-            dir = Directory.GetParent(dir).FullName;
-            dir = Directory.GetParent(dir).FullName + "\bejegyzesek.csv";
+            dir = Directory.GetParent(dir).FullName + "\\bejegyzesek.csv";
 
             StreamReader file = new StreamReader(dir);
 
@@ -60,23 +63,22 @@ namespace BejegyzesProjekt
         static void F2D()
         {
             Random random = new Random();
-            int hossz = bejegyzesek.Count();
+            int hossz = 0;
             int likeszamMax = 0;
 
             do
-            {
-                for (int i = 0; i <= hossz - 1; i++)
+            {   
+                int likeszam = random.Next(0, hossz * 20);
+
+                for (int j = 0; j < likeszam; j++)
                 {
-                    int likeszam = random.Next(0, hossz * 20);
-
-                    for (int j = 0; j < likeszam; j++)
-                    {
-                        bejegyzesek[i].Like();
-                    }
-
-                    likeszamMax += likeszam;
+                    bejegyzesek[hossz].Like();
                 }
-            } while (likeszamMax != hossz * 20);
+
+                likeszamMax += likeszam;
+                hossz++;
+
+            } while (likeszamMax != hossz * 20 && hossz != bejegyzesek.Count());
         }
 
         static void F2E()
@@ -85,6 +87,14 @@ namespace BejegyzesProjekt
             string szoveg = Console.ReadLine();
 
             bejegyzesek[1].Tartalom = szoveg;
+        }
+
+        static void F2F()
+        {
+            for (int i = 0; i < bejegyzesek.Count() - 1; i++)
+            {
+                Console.WriteLine(bejegyzesek[i].ToString()); 
+            }
         }
     }
 }

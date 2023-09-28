@@ -20,7 +20,7 @@ namespace BejegyzesProjekt
             this.tartalom = tartalom;
             this.likeok = 0;
             this.letrejott = DateTime.Now;
-            this.szerkesztve = DateTime.Now;
+            this.szerkesztve = this.letrejott;
 
         }
 
@@ -38,13 +38,13 @@ namespace BejegyzesProjekt
         public override string ToString()
         {
 
-            if (letrejott != szerkesztve)
+            if (letrejott.CompareTo(szerkesztve) != 0)
             {
-                return $"{szerzo} - {likeok} - {letrejott}\nSzerkesztve:{szerkesztve}\n{tartalom}";
+                return $"{szerzo} - {likeok} - {letrejott}\nSzerkesztve:{szerkesztve}\n{tartalom}\n";
             }
             else
             {
-                return $"{szerzo} - {likeok} - {letrejott}\n{tartalom}";
+                return $"{szerzo} - {likeok} - {letrejott}\n{tartalom}\n";
             }
         }
     }
