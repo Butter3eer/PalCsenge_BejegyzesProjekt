@@ -16,6 +16,7 @@ namespace BejegyzesProjekt
             F2D();
             F2E();
             F2F();
+            F3A();
         }
 
         static List<Bejegyzes> bejegyzesek = new List<Bejegyzes>() { new Bejegyzes("Nagy Pál", "Az őszi kecske kalandjait elmesélő könyv."), new Bejegyzes("Kis Pál", "A kis kecske kalandjait elmesélő regény.") };
@@ -91,10 +92,18 @@ namespace BejegyzesProjekt
 
         static void F2F()
         {
-            for (int i = 0; i < bejegyzesek.Count() - 1; i++)
+            for (int i = 0; i < bejegyzesek.Count(); i++)
             {
                 Console.WriteLine(bejegyzesek[i].ToString()); 
             }
+        }
+
+        static void F3A()
+        {
+            Console.WriteLine("-----------------------------------------------");
+            Bejegyzes legnepszerubb = bejegyzesek.Find(x => x.Likeok == bejegyzesek.Max(y => y.Likeok));
+
+            Console.WriteLine(legnepszerubb.ToString());
         }
     }
 }
