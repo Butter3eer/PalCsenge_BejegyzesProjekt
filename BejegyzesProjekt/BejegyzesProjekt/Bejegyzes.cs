@@ -34,5 +34,18 @@ namespace BejegyzesProjekt
         {
             likeok++;
         }
+
+        public override string ToString()
+        {
+
+            if (letrejott != szerkesztve)
+            {
+                return $"{szerzo} - {likeok} - {letrejott}\nSzerkesztve:{szerkesztve}\n{tartalom}";
+            }
+            else
+            {
+                return $"{szerzo} - {likeok} - {letrejott}\n{tartalom}";
+            }
+        }
     }
 }
