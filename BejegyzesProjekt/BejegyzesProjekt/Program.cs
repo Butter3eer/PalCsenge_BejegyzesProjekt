@@ -19,6 +19,7 @@ namespace BejegyzesProjekt
             F3A();
             F3B();
             F3C();
+            F3D();
         }
 
         static List<Bejegyzes> bejegyzesek = new List<Bejegyzes>() { new Bejegyzes("Nagy Pál", "Az őszi kecske kalandjait elmesélő könyv."), new Bejegyzes("Kis Pál", "A kis kecske kalandjait elmesélő regény.") };
@@ -156,6 +157,21 @@ namespace BejegyzesProjekt
                     Console.WriteLine(nemAnnyiraNepszeruek[i].ToString());
                 }
             }
+        }
+
+        static void F3D()
+        {
+            StreamWriter file = new StreamWriter("bejegyzesek_rendezett.txt");
+
+            List<Bejegyzes> rendezett = bejegyzesek.OrderByDescending(x => x.Likeok).ToList();
+
+            for (int i = 0; i < rendezett.Count; i++)
+            {
+                Console.WriteLine(rendezett[i].ToString());
+                file.WriteLine(rendezett[i].ToString() + "\n");
+            }
+
+            file.Close();
         }
     }
 }
