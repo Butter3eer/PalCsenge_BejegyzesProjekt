@@ -17,6 +17,7 @@ namespace BejegyzesProjekt
             F2E();
             F2F();
             F3A();
+            F3B();
         }
 
         static List<Bejegyzes> bejegyzesek = new List<Bejegyzes>() { new Bejegyzes("Nagy Pál", "Az őszi kecske kalandjait elmesélő könyv."), new Bejegyzes("Kis Pál", "A kis kecske kalandjait elmesélő regény.") };
@@ -79,7 +80,7 @@ namespace BejegyzesProjekt
                 likeszamMax += likeszam;
                 hossz++;
 
-            } while (likeszamMax != hossz * 20 && hossz != bejegyzesek.Count());
+            } while (likeszamMax != hossz * 20 && hossz != bejegyzesek.Count);
         }
 
         static void F2E()
@@ -92,7 +93,7 @@ namespace BejegyzesProjekt
 
         static void F2F()
         {
-            for (int i = 0; i < bejegyzesek.Count(); i++)
+            for (int i = 0; i < bejegyzesek.Count; i++)
             {
                 Console.WriteLine(bejegyzesek[i].ToString()); 
             }
@@ -104,6 +105,31 @@ namespace BejegyzesProjekt
             Bejegyzes legnepszerubb = bejegyzesek.Find(x => x.Likeok == bejegyzesek.Max(y => y.Likeok));
 
             Console.WriteLine(legnepszerubb.ToString());
+        }
+
+        static void F3B()
+        {
+            List<Bejegyzes> nepszeruBejegyzesek = new List<Bejegyzes>();
+
+            for (int i = 0; i < bejegyzesek.Count; i++)
+            {
+                if (bejegyzesek[i].Likeok > 35)
+                {
+                    nepszeruBejegyzesek.Add(bejegyzesek[i]);
+                }
+            }
+
+            if (nepszeruBejegyzesek.Count == 0)
+            {
+                Console.WriteLine("Nincs 35 like-nál többel rendelkező bejegyzés!");
+            }
+            else
+            {
+                for (int i = 0; i < nepszeruBejegyzesek.Count; i++)
+                {
+                    Console.WriteLine(nepszeruBejegyzesek[i].ToString());
+                }    
+            }
         }
     }
 }
