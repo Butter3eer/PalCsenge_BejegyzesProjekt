@@ -16,7 +16,7 @@ namespace BejegyzesProjekt
 
         static List<Bejegyzes> bejegyzesek = new List<Bejegyzes>() { new Bejegyzes("Nagy Pál", "Az őszi kecske kalandjait elmesélő könyv."), new Bejegyzes("Kis Pál", "A kis kecske kalandjait elmesélő regény.") };
 
-        static void F2A()
+        static void F2B()
         {
             int number;
             Console.WriteLine("Darabszám: ");
@@ -36,11 +36,11 @@ namespace BejegyzesProjekt
             else
             {
                 Console.WriteLine("Hibás input! Csak egész számot adhat meg!");
-                F2A();
+                F2B();
             }
         }
 
-        static void F2B()
+        static void F2C()
         {
             string dir = Directory.GetCurrentDirectory();
             dir = Directory.GetParent(dir).FullName;
@@ -55,6 +55,28 @@ namespace BejegyzesProjekt
                 bejegyzesek.Add(new Bejegyzes(row[0], row[1]));
             }
             file.Close();
+        }
+
+        static void F2D()
+        {
+            Random random = new Random();
+            int hossz = bejegyzesek.Count();
+            int likeszamMax = 0;
+
+            do
+            {
+                for (int i = 0; i <= hossz - 1; i++)
+                {
+                    int likeszam = random.Next(0, hossz * 20);
+
+                    for (int j = 0; j < likeszam; j++)
+                    {
+                        bejegyzesek[i].Like();
+                    }
+
+                    likeszamMax += likeszam;
+                }
+            } while (likeszamMax != hossz * 20);
         }
     }
 }
